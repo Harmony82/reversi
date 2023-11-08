@@ -5,8 +5,10 @@
 
 class board
 {
-	std::vector<std::vector<grid>> _board();
+private:
+	std::vector<std::vector<grid>> _board;
 public:
 	board(int length);
+	void show_board();
 };
 

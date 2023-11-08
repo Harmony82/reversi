@@ -7,9 +7,8 @@ enum class grid_data
 };
 class grid
 {
-private:
-	grid_data _grid_data;
 public:
+	grid_data _grid_data;
 	grid();
 	void put_black();
 	void put_white();

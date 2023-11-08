@@ -1,0 +1,5 @@
+﻿  board.cpp
+  source.cpp
+C:\Users\小川聖矢\Documents\GitHub\reversi\reversi\reversi\source.cpp(8,6): warning C4101: 'test': ローカル変数は 1 度も使われていません。
+  コードを生成中...
+  reversi.vcxproj -> C:\Users\小川聖矢\Documents\GitHub\reversi\reversi\x64\Debug\reversi.exe
