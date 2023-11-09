@@ -1,9 +1,11 @@
 #include <iostream>
 #include<string>
+#include"reversi.h"
 
 using namespace std;
 
 int main()
 {
-	int test;
+	reversi _reversi;
+	_reversi.game();
 }

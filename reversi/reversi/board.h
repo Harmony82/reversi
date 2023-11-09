@@ -8,7 +8,8 @@ class board
 private:
 	std::vector<std::vector<grid>> _board;
 public:
-	board(int length);
+	board();
 	void show_board();
+	void board_resize(int length);
 };
 

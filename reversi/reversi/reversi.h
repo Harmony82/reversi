@@ -4,9 +4,8 @@
 class reversi
 {
 private:
-	board game_board();
+	board game_board;
 public:
 	reversi();
 	void game();
-
 };

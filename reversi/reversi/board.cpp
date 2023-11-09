@@ -1,9 +1,8 @@
 #include <iostream>
 #include "board.h"
 
-board::board(int length)
+board::board()
 {
-	_board.resize(length, std::vector<grid>(length));
 }
 void board::show_board()
 {
@@ -14,6 +13,7 @@ void board::show_board()
 			std::cout << "+--";
 		}
 		std::cout << "+";
+		std::cout << "\n";
 		for (int i = 0; i < _board.size(); i++)
 		{
 			std::cout << "|";
@@ -31,10 +31,15 @@ void board::show_board()
 			}
 		}
 		std::cout << "|";
+		std::cout << "\n";
 	}
 	for (int i = 0; i < _board.size(); i++)
 	{
 		std::cout << "+--";
 	}
 	std::cout << "+";
+}
+void board::board_resize(int length)
+{
+	_board.resize(length, std::vector<grid>(length));
 }
