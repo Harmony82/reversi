@@ -7,9 +7,9 @@ class board
 {
 private:
 	std::vector<std::vector<grid>> _board;
+	int length;
 public:
 	board();
 	void show_board();
-	void board_resize(int length);
+	void board_Initialize(int length);
 };
-

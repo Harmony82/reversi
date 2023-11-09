@@ -3,6 +3,7 @@
 
 board::board()
 {
+
 }
 void board::show_board()
 {
@@ -39,7 +40,22 @@ void board::show_board()
 	}
 	std::cout << "+";
 }
-void board::board_resize(int length)
+int Initial_placement_length(int whole_length)
+{
+	int tmp = (whole_length - 4) / 2;
+	if (tmp % 2 == 1)
+	{
+		tmp--;
+	}
+	if (whole_length % 2 == 1)
+	{
+		tmp++;
+	}
+	return tmp;
+}
+void board::board_Initialize(int length)
 {
 	_board.resize(length, std::vector<grid>(length));
+	this->length = length;
+
 }
