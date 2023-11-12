@@ -1,10 +1,6 @@
 #pragma once
-enum class grid_data
-{
-	NONE,
-	BLACK,
-	WHITE,
-};
+#include "grid_data.h"
+
 class grid
 {
 public:

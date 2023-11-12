@@ -1,5 +1,8 @@
 #include <iostream>
 #include "reversi.h"
+#include "player.h"
+#include "grid_data.h"
+
 reversi::reversi()
 {
 

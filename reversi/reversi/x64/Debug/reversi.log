@@ -1,2 +1,6 @@
 ﻿  board.cpp
-  reversi.vcxproj -> C:\Users\seiya\GitHub\reversi\reversi\x64\Debug\reversi.exe
+C:\Users\Seiya\Github\reversi\reversi\reversi\board.cpp(67,2): error C2065: '_board': 定義されていない識別子です。
+  player.cpp
+C:\Users\Seiya\Github\reversi\reversi\reversi\player.cpp(7,13): error C2059: 構文エラー: ';'
+  vector2int.cpp
+  コードを生成中...

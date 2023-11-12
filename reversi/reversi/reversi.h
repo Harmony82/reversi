@@ -3,9 +3,8 @@
 
 class reversi
 {
-private:
-	board game_board;
 public:
+	board game_board;
 	reversi();
 	void game();
 };

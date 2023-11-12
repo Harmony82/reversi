@@ -1,10 +1,11 @@
 #include <iostream>
 #include "board.h"
+#include "grid_data.h"
 
-board::board()
-{
-
-}
+//board::board()
+//{
+//
+//}
 void board::show_board()
 {
 	for (int ii = 0; ii < _board.size(); ii++)
@@ -57,5 +58,15 @@ void board::board_Initialize(int length)
 {
 	_board.resize(length, std::vector<grid>(length));
 	this->length = length;
-
+	_board[3][3]._grid_data = grid_data::BLACK;
+	_board[3][4]._grid_data = grid_data::WHITE;
+	_board[4][4]._grid_data = grid_data::BLACK;
+	_board[4][3]._grid_data = grid_data::WHITE;
+}
+bool board::put_disc(vector2int point, grid_data color)
+{
+	if (color == grid_data::BLACK)
+		_board[point.line][point.column].put_black();
+	if (color == grid_data::WHITE)
+		_board[point.line][point.column].put_white();
 }
