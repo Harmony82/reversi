@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClCompile Include="board.cpp" />
     <ClCompile Include="grid.cpp" />
+    <ClCompile Include="user.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="reversi.cpp" />
     <ClCompile Include="source.cpp" />
@@ -138,6 +139,7 @@
     <ClInclude Include="board.h" />
     <ClInclude Include="grid.h" />
     <ClInclude Include="grid_data.h" />
+    <ClInclude Include="user.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="reversi.h" />
     <ClInclude Include="vector2int.h" />

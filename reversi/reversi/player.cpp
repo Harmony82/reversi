@@ -1,8 +1,9 @@
 #include "player.h"
 #include "board.h"
 #include "vector2int.h"
+#include "grid_data.h"
 
-void put(vector2int point,board game_board)
+bool player::put(vector2int point,board game_board)
 {
-	game_board.;
+	return game_board.put_disc(point,color);
 }

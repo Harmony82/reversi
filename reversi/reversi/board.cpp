@@ -2,10 +2,6 @@
 #include "board.h"
 #include "grid_data.h"
 
-//board::board()
-//{
-//
-//}
 void board::show_board()
 {
 	for (int ii = 0; ii < _board.size(); ii++)
@@ -65,8 +61,9 @@ void board::board_Initialize(int length)
 }
 bool board::put_disc(vector2int point, grid_data color)
 {
-	if (color == grid_data::BLACK)
-		_board[point.line][point.column].put_black();
-	if (color == grid_data::WHITE)
-		_board[point.line][point.column].put_white();
+	if (point.column > length)return false;
+	if (point.line > length)return false;
+	if (_board[point.line][point.column]._grid_data != grid_data::NONE)return false;
+	_board[point.line][point.column].grid_put(color);
+	return true;
 }

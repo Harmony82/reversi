@@ -2,7 +2,7 @@
 #include "reversi.h"
 #include "player.h"
 #include "grid_data.h"
-
+#include "user.h"
 reversi::reversi()
 {
 
