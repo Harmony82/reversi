@@ -1,5 +1,8 @@
 #include "cpu.h"
+#include "vector2int.h"
+#include <vector>
 #include<iostream>
+#include <random>
 cpu::cpu()
 {
 	const grid_data usercolor = grid_data::WHITE;
@@ -7,13 +10,22 @@ cpu::cpu()
 }
 void cpu::cpu_put(board& board)
 {
-	vector2int put_point;
-	do
+	board.put_disc(cpu_thinking(board), color);
+}
+vector2int cpu::cpu_thinking(board board)
+{
+	std::random_device rand;
+	std::vector<vector2int> candidate;
+	for (int i = 0; i < board.get_length(); i++)
 	{
-		std::cout << "石を置きます。座標を入力してください。" << "\n";
-		std::cout << "縦";
-		std::cin >> put_point.column;
-		std::cout << "横";
-		std::cin >> put_point.line;
-	} while (!board.put_disc(put_point, color));
+		for (int ii = 0; ii < board.get_length(); ii++)
+		{
+			vector2int point(i, ii);
+			if (board.can_put(point, color))
+			{
+				candidate.push_back(point);
+			}
+		}
+	}
+	return candidate[rand() % candidate.size()];
 }
