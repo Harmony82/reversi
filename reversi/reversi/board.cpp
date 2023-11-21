@@ -66,27 +66,29 @@ bool board::put_disc(vector2int point, grid_data color)
 	if (point.line > length)return false;
 	if (_board[point.line][point.column]._grid_data != grid_data::NONE)return false;
 	_board[point.line][point.column].grid_put(color);
+	put_influence(point);
 	return true;
 }
 void board::put_influence(vector2int point)
 {
-	int dx[8] = { -1,0,1,1,1,0,-1,-1 };
-	int	dy[8] = { -1,-1,-1,0,1,1,1,0 };
+	int dy[8] = { -1,0,1,1,1,0,-1,-1 };
+	int	dx[8] = { -1,-1,-1,0,1,1,1,0 };
+	int ii;
 	for (int i = 0; i < 8; i++)
 	{
+		ii = 1;
 		while (1)
 		{
-			int ii;
 			if (_board[point.line][point.column]._grid_data == grid_data::BLACK &&
 				_board[point.line + (dx[i] * ii)][point.column + (dy[i] * ii)]._grid_data == grid_data::BLACK)
-				continue;
+				break;
 			if (_board[point.line][point.column]._grid_data == grid_data::WHITE &&
 				_board[point.line + (dx[i] * ii)][point.column + (dy[i] * ii)]._grid_data == grid_data::WHITE)
-				continue;
+				break;
 			if (_board[point.line + (dx[i] * ii)][point.column + (dy[i] * ii)]._grid_data == grid_data::NONE)
-				continue;
-
-			ii++;
+				break;
+			_board[point.line + (dx[i] * ii)][point.column + (dy[i] * ii)].turnover();
+				ii++;
 		}
 	}
 }

@@ -19,6 +19,7 @@ void reversi::game()
 	{
 		game_board.show_board();
 		player1.user_put(game_board);
+		game_board.show_board();
 		player2.cpu_put(game_board);
 	}
 }

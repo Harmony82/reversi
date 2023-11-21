@@ -13,9 +13,9 @@ void user::user_put(board &board)
 	do
 	{
 		std::cout << "Î‚ð’u‚«‚Ü‚·BÀ•W‚ð“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B" << "\n";
-		std::cout << "c";
-		std::cin >> put_point.column;
 		std::cout << "‰¡";
+		std::cin >> put_point.column;
+		std::cout << "c";
 		std::cin >> put_point.line;
 	} while (!board.put_disc(put_point,color));
 }
