@@ -1,8 +1,2 @@
-﻿  board.cpp
-  cpu.cpp
-  player.cpp
-  reversi.cpp
-  source.cpp
-  user.cpp
-  コードを生成中...
+﻿  user.cpp
   reversi.vcxproj -> C:\Users\Seiya\Github\reversi\reversi\x64\Debug\reversi.exe

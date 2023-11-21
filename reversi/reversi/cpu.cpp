@@ -8,9 +8,16 @@ cpu::cpu()
 	const grid_data usercolor = grid_data::WHITE;
 	color = usercolor;
 }
-void cpu::cpu_put(board& board)
+bool cpu::cpu_put(board& board)
 {
+	if (!board.can_put_somewhere(color))
+	{
+		std::cout << "置ける場所がない。パス。";
+		std::cout << "\n";
+		return false;
+	}
 	board.put_disc(cpu_thinking(board), color);
+	return true;
 }
 vector2int cpu::cpu_thinking(board board)
 {

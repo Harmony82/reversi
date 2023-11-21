@@ -4,5 +4,10 @@ class user :public player
 {
 public:
 	user();
-	void user_put(board &board);
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <param name="board"></param>
+	/// <returns>ƒpƒX‚·‚é‚±‚Æ‚È‚­’u‚¯‚½‚©‚Ç‚¤‚©</returns>
+	bool user_put(board &board);
 };
