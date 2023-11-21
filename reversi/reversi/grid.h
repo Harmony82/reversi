@@ -1,17 +1,11 @@
 #pragma once
-enum class grid_data
-{
-	NONE,
-	BLACK,
-	WHITE,
-};
+#include "grid_data.h"
+
 class grid
 {
 public:
 	grid_data _grid_data;
 	grid();
-	void put_black();
-	void put_white();
+	void grid_put(grid_data color);
 	void turnover();
 };
-
