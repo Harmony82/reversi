@@ -76,6 +76,7 @@ bool board::put_disc(vector2int point, grid_data color)
 	if (point.column > length)return false;
 	if (point.line > length)return false;
 	if (_board[point.line][point.column]._grid_data != grid_data::NONE)return false;
+	if (!can_put(point, color))return false;
 	_board[point.line][point.column].grid_put(color);
 	put_influence(point);
 	return true;
@@ -114,4 +115,30 @@ bool board::Is_inboard(int column, int line)
 	if (line >= length)return false;
 
 	return true;
+}
+bool board::can_put(vector2int point, grid_data color)
+{
+	int dx[8] = { -1,0,1,1,1,0,-1,-1 };
+	int	dy[8] = { -1,-1,-1,0,1,1,1,0 };
+	for (int i = 0; i < 8; i++)
+	{
+		int search_point = 1;
+		while (1)
+		{
+			if (!Is_inboard(point.column + (dx[i] * search_point), point.line + (dy[i] * search_point)))break;
+			if (_board[point.line + (dy[i] * search_point)][point.column + (dx[i] * search_point)]._grid_data == color)
+			{
+				if (search_point > 1)
+					return true;
+			}
+			if (_board[point.line + (dy[i] * search_point)][point.column + (dx[i] * search_point)]._grid_data == grid_data::NONE)
+				break;
+			search_point++;
+		}
+	}
+	return false;
+}
+int board::get_length()
+{
+	return length;
 }
