@@ -1,6 +1,7 @@
 #include <iostream>
 #include "board.h"
 #include "grid_data.h"
+#include "vector2int.h"
 
 void board::show_board()
 {
@@ -66,4 +67,26 @@ bool board::put_disc(vector2int point, grid_data color)
 	if (_board[point.line][point.column]._grid_data != grid_data::NONE)return false;
 	_board[point.line][point.column].grid_put(color);
 	return true;
+}
+void board::put_influence(vector2int point)
+{
+	int dx[8] = { -1,0,1,1,1,0,-1,-1 };
+	int	dy[8] = { -1,-1,-1,0,1,1,1,0 };
+	for (int i = 0; i < 8; i++)
+	{
+		while (1)
+		{
+			int ii;
+			if (_board[point.line][point.column]._grid_data == grid_data::BLACK &&
+				_board[point.line + (dx[i] * ii)][point.column + (dy[i] * ii)]._grid_data == grid_data::BLACK)
+				continue;
+			if (_board[point.line][point.column]._grid_data == grid_data::WHITE &&
+				_board[point.line + (dx[i] * ii)][point.column + (dy[i] * ii)]._grid_data == grid_data::WHITE)
+				continue;
+			if (_board[point.line + (dx[i] * ii)][point.column + (dy[i] * ii)]._grid_data == grid_data::NONE)
+				continue;
+
+			ii++;
+		}
+	}
 }

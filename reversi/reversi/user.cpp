@@ -7,7 +7,7 @@ user::user()
 	const grid_data usercolor = grid_data::BLACK;
 	color = usercolor;
 }
-void user::user_put(board board)
+void user::user_put(board &board)
 {
 	vector2int put_point;
 	do
@@ -17,5 +17,5 @@ void user::user_put(board board)
 		std::cin >> put_point.column;
 		std::cout << "‰¡";
 		std::cin >> put_point.line;
-	} while (put(put_point, board));
+	} while (!board.put_disc(put_point,color));
 }
