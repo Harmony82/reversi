@@ -2,17 +2,26 @@
 #include "board.h"
 #include "grid_data.h"
 #include "vector2int.h"
+#include <format>
 
 void board::show_board()
 {
+	std::wcout << "   ";
+	for (int i = 0; i < length; i++)
+	{
+		std::cout << std::format("{:2d}", i + 1) << " ";
+	}
+	std::cout << "\n";
 	for (int ii = 0; ii < _board.size(); ii++)
 	{
+		std::cout << "  ";
 		for (int i = 0; i < _board.size(); i++)
 		{
 			std::cout << "+--";
 		}
 		std::cout << "+";
 		std::cout << "\n";
+		std::cout << std::format("{:2d}", ii + 1);
 		for (int i = 0; i < _board.size(); i++)
 		{
 			std::cout << "|";
@@ -32,11 +41,13 @@ void board::show_board()
 		std::cout << "|";
 		std::cout << "\n";
 	}
+	std::cout << "  ";
 	for (int i = 0; i < _board.size(); i++)
 	{
 		std::cout << "+--";
 	}
 	std::cout << "+";
+	std::cout << "\n";
 }
 int Initial_placement_length(int whole_length)
 {
@@ -71,24 +82,36 @@ bool board::put_disc(vector2int point, grid_data color)
 }
 void board::put_influence(vector2int point)
 {
-	int dy[8] = { -1,0,1,1,1,0,-1,-1 };
-	int	dx[8] = { -1,-1,-1,0,1,1,1,0 };
-	int ii;
+	int dx[8] = { -1,0,1,1,1,0,-1,-1 };
+	int	dy[8] = { -1,-1,-1,0,1,1,1,0 };
 	for (int i = 0; i < 8; i++)
 	{
-		ii = 1;
+		int search_point = 1;
 		while (1)
 		{
-			if (_board[point.line][point.column]._grid_data == grid_data::BLACK &&
-				_board[point.line + (dx[i] * ii)][point.column + (dy[i] * ii)]._grid_data == grid_data::BLACK)
+			if (!Is_inboard(point.column + (dx[i] * search_point), point.line + (dy[i] * search_point)))break;
+			if (_board[point.line + (dy[i] * search_point)][point.column + (dx[i] * search_point)]._grid_data ==
+				_board[point.line][point.column]._grid_data)
+			{
+				search_point--;
+				for (search_point; search_point > 0; search_point--)
+				{
+					_board[point.line + (dy[i] * search_point)][point.column + (dx[i] * search_point)].turnover();
+				}
 				break;
-			if (_board[point.line][point.column]._grid_data == grid_data::WHITE &&
-				_board[point.line + (dx[i] * ii)][point.column + (dy[i] * ii)]._grid_data == grid_data::WHITE)
+			}
+			if (_board[point.line + (dy[i] * search_point)][point.column + (dx[i] * search_point)]._grid_data == grid_data::NONE)
 				break;
-			if (_board[point.line + (dx[i] * ii)][point.column + (dy[i] * ii)]._grid_data == grid_data::NONE)
-				break;
-			_board[point.line + (dx[i] * ii)][point.column + (dy[i] * ii)].turnover();
-				ii++;
+			search_point++;
 		}
 	}
+}
+bool board::Is_inboard(int column, int line)
+{
+	if (column < 0)return false;
+	if (column >= length)return false;
+	if (line < 0)return false;
+	if (line >= length)return false;
+
+	return true;
 }

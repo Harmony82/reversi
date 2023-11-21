@@ -16,4 +16,5 @@ public:
 	bool put_disc(vector2int point, grid_data color);
 private:
 	void put_influence(vector2int point);
+	bool Is_inboard(int column, int line);
 };

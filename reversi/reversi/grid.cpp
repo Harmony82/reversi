@@ -13,9 +13,11 @@ void grid::turnover()
 	if (_grid_data == grid_data::BLACK)
 	{
 		_grid_data = grid_data::WHITE;
+		return;
 	}
 	if (_grid_data == grid_data::WHITE)
 	{
 		_grid_data = grid_data::BLACK;
+		return;
 	}
 }
